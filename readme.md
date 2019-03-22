@@ -1,0 +1,1 @@
+consulta a base de datos con mysqli
