@@ -3,29 +3,22 @@
 <head>
 	<title>title</title>
 	<meta charset='utf-8' />
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css" />
+	</head>
 <body>
-	
+<div class="container">	
+<h1>Aplicación libro de visitas</h1>
+<p><a class="btn btn-primary" href="altas_mensajes.php">Añadir Mensaje</a></p>
 <?php 
-	// Datos de la base de datos
-	$usuario = "root";
-	$password = "";
-	$servidor = "localhost";
-	$basededatos = "cursos";
-	
-	// creación de la conexión a la base de datos con mysqli_connect()
-	$conexion = mysqli_connect( $servidor, $usuario, $password ) or die ("No se ha podido conectar al servidor de Base de datos");
-	// forzar a que lea en utf-8 para que nos salgan bien las ñ
-	mysqli_query($conexion,"SET CHARACTER SET 'utf8'");
-	// Selección del a base de datos a utilizar
-	$db = mysqli_select_db( $conexion, $basededatos ) or die ( "Vaya! Pues va a ser que no se ha podido conectar a la base de datos" );
+	include 'conexiondb.php';
 	// establecer y realizar consulta. guardamos en variable.
-	$consulta = "SELECT * FROM mensajes";
+	$consulta = "SELECT * FROM mensajes ORDER BY id DESC";
 	$resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en la consulta a la base de datos");
 	
 	// Motrar el resultado de los registro de la base de datos
 	?>
-	<table class='datos'>
+	<table class='table'>
 	<tr>
 		<th>ID</th>
 		<th>Nombre </th>
@@ -51,8 +44,9 @@
 	<?php
 	mysqli_close( $conexion );
 ?>
-	
-</head>
+
+	</div>
+
 </body>
 </html>
 
