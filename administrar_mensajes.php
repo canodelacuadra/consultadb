@@ -1,18 +1,15 @@
 <!DOCTYPE html>
 <html  lang="es">
 <head>
-	<title>Aplicación mensajes</title>
+	<title>Administrar Mensajes</title>
 	<meta charset='utf-8' />
 	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="style.css" />
 	</head>
 <body>
 <div class="container">	
-<h1>Aplicación libro de visitas</h1>
-<p>
-<a class="btn btn-primary" href="altas_mensajes.php">Añadir Mensaje</a>
-<a class="btn btn-success" href="administrar_mensajes.php">Administrar Mensajes</a>
-</p>
+<h1>Administrar libro de visitas</h1>
+
 <?php 
 	include 'conexiondb.php';
 	// establecer y realizar consulta. guardamos en variable.
@@ -27,6 +24,8 @@
 		<th>Nombre </th>
 		<th>Email</th>
 		<th>Mensaje</th>
+		<th>Borrar</th>
+		<th>Modificar</th>
 	</tr>
 	<?php
 	// Bucle while que recorre cada registro y muestra cada campo en la tabla.
@@ -37,6 +36,8 @@
 			<td><?php echo $columna['nombre'];?></td>
 			<td><?php echo $columna['email'];?></td>
 			<td><?php echo $columna['mensaje']; ?></td>
+			<td><a class ='btn btn-danger'  href="borrar_mensajes.php?id=<?php echo $columna['id'];?>"> Borrar</a></td>
+			<td><a class ='btn btn-warning' href="modificar_mensajes.php?id=<?php echo $columna['id'];?>">Modificar</a></td>
 		</tr>
 	<?php
 	}
