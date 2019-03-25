@@ -3,9 +3,12 @@
 <head>
 <title>title</title>
 <meta charset='utf-8' />
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="style.css" />
+</head>
 <body>
 
+<div class="container">
 <?php 
 include 'conexiondb.php';
 // establecer y realizar consulta. guardamos en variable.
@@ -14,7 +17,7 @@ $resultado = mysqli_query( $conexion, $consulta ) or die ( "Algo ha ido mal en l
 
 // Motrar el resultado de los registro de la base de datos
 ?>
-<table class='datos'>
+<table class="table">
 <tr>
 <th>id</th>
 <th>nombres</th>
@@ -44,7 +47,8 @@ while ($columna = mysqli_fetch_array( $resultado )){
 <?php
 mysqli_close( $conexion );
 ?>
+<a class="btn btn-success" href="altaempleado.php">añadir empleado</a>
+</div>
 
-</head>
 </body>
 </html>
